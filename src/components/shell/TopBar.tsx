@@ -18,16 +18,24 @@ import { NotificationsBell } from "@/components/notifications/NotificationsBell"
 import { searchTransactions, initializeSearchIndex } from "@/lib/search";
 import ThemeToggle from "@/components/theme-toggle";
 import { UserButton, SignedIn, SignedOut, SignInButton } from '@clerk/nextjs';
+import { supportedLanguages } from "@/lib/i18n";
+import { useTranslation } from "react-i18next";
 
 interface TopBarProps {
   className?: string;
 }
 
 export function TopBar({ className }: TopBarProps) {
-  const [language, setLanguage] = useState("en");
+  const { i18n } = useTranslation();
+  const [language, setLanguage] = useState(i18n.language || "en");
   
   // Search store
   const { query, setQuery, setResults, clear, open } = useSearch();
+  
+  // Update language state when i18n language changes
+  useEffect(() => {
+    setLanguage(i18n.language || "en");
+  }, [i18n.language]);
   
   // Debounced search function
   const debouncedSetQuery = useMemo(
@@ -72,12 +80,10 @@ export function TopBar({ className }: TopBarProps) {
     return () => document.removeEventListener('keydown', handleKeyDown);
   }, []);
 
-
-
-  const changeLanguage = (lang: string) => {
-    setLanguage(lang);
-    // TODO: Implement actual language change
-    console.log("Language changed to:", lang);
+  const changeLanguage = async (lng: string) => {
+    await i18n.changeLanguage(lng);
+    setLanguage(lng);
+    localStorage.setItem("i18nextLng", lng);
   };
 
   const handleSearch = async (searchQuery: string) => {
@@ -93,9 +99,6 @@ export function TopBar({ className }: TopBarProps) {
       }
     }
   };
-
-  // Suppress unused variable warning
-  console.log("Current language:", language);
 
   return (
     <header className={cn("sticky top-0 z-50 w-full border-b border-border bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60", className)}>
@@ -168,15 +171,15 @@ export function TopBar({ className }: TopBarProps) {
               </Button>
             </DropdownMenuTrigger>
             <DropdownMenuContent align="end">
-              <DropdownMenuItem onClick={() => changeLanguage("en")}>
-                🇺🇸 English
-              </DropdownMenuItem>
-              <DropdownMenuItem onClick={() => changeLanguage("es")}>
-                🇪🇸 Español
-              </DropdownMenuItem>
-              <DropdownMenuItem onClick={() => changeLanguage("fr")}>
-                🇫🇷 Français
-              </DropdownMenuItem>
+              {supportedLanguages.map((lng) => (
+                <DropdownMenuItem 
+                  key={lng.code} 
+                  onClick={() => changeLanguage(lng.code)}
+                  className={language === lng.code ? "bg-accent" : ""}
+                >
+                  {lng.label}
+                </DropdownMenuItem>
+              ))}
             </DropdownMenuContent>
           </DropdownMenu>
 

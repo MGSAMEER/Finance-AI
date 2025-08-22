@@ -7,21 +7,26 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { Switch } from "@/components/ui/switch";
 import { supportedLanguages } from "@/lib/i18n";
 import { useEffect, useState } from "react";
-import i18n from "@/lib/i18n";
 import { resetDatabaseAndSeed } from "@/lib/db";
 import { useToast } from "@/hooks/use-toast";
 import { useTheme } from "next-themes";
+import { useTranslation } from "react-i18next";
 
 export default function SettingsPage() {
-  const [language, setLanguage] = useState(i18n.language || "en");
   const [isResetting, setIsResetting] = useState(false);
   const { toast } = useToast();
   const { theme, setTheme, resolvedTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
+  const { i18n } = useTranslation();
+  const [language, setLanguage] = useState(i18n.language || "en");
 
   useEffect(() => {
     setMounted(true);
   }, []);
+
+  useEffect(() => {
+    setLanguage(i18n.language || "en");
+  }, [i18n.language]);
 
   const handleLanguageChange = async (lng: string) => {
     await i18n.changeLanguage(lng);
