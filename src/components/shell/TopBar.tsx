@@ -122,7 +122,7 @@ export function TopBar({ className }: TopBarProps) {
             <div className="relative">
               <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-muted-foreground pointer-events-none" />
               <Input
-                placeholder="Search transactions, reports... (Press / to focus)"
+                placeholder="Search transaction/Reports(Search By Category)"
                 className="pl-10 bg-muted/50 border-0 focus-visible:ring-2 focus-visible:ring-ring pointer-events-auto"
                 value={query}
                 onChange={(e) => {
