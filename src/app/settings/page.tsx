@@ -10,23 +10,27 @@ import { useEffect, useState } from "react";
 import i18n from "@/lib/i18n";
 import { resetDatabaseAndSeed } from "@/lib/db";
 import { useToast } from "@/hooks/use-toast";
+import { useTheme } from "next-themes";
 
 export default function SettingsPage() {
   const [language, setLanguage] = useState(i18n.language || "en");
-  const [darkMode, setDarkMode] = useState(false);
   const [isResetting, setIsResetting] = useState(false);
   const { toast } = useToast();
+  const { theme, setTheme, resolvedTheme } = useTheme();
+  const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
-    const html = document.documentElement;
-    if (darkMode) html.classList.add("dark");
-    else html.classList.remove("dark");
-  }, [darkMode]);
+    setMounted(true);
+  }, []);
 
   const handleLanguageChange = async (lng: string) => {
     await i18n.changeLanguage(lng);
     setLanguage(lng);
     localStorage.setItem("i18nextLng", lng);
+  };
+
+  const handleThemeChange = (checked: boolean) => {
+    setTheme(checked ? "dark" : "light");
   };
 
   const handleResetDatabase = async () => {
@@ -100,7 +104,12 @@ export default function SettingsPage() {
               <Label>Theme</Label>
               <span className="text-sm text-muted-foreground">Toggle dark mode</span>
             </div>
-            <Switch checked={darkMode} onCheckedChange={setDarkMode} />
+            {mounted && (
+              <Switch 
+                checked={resolvedTheme === "dark"} 
+                onCheckedChange={handleThemeChange} 
+              />
+            )}
           </div>
 
           <div>
