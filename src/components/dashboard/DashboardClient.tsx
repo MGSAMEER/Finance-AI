@@ -148,11 +148,11 @@ export function DashboardClient() {
       </div>
 
       <div className="grid gap-4 grid-cols-1 md:grid-cols-2 lg:grid-cols-2">
-        <Card className="h-64">
-          <CardHeader>
-            <CardTitle>{t('charts.spendingByCategory')}</CardTitle>
+        <Card className="h-64 md:h-72 lg:h-80">
+          <CardHeader className="pb-2">
+            <CardTitle className="text-sm md:text-base">{t('charts.spendingByCategory')}</CardTitle>
           </CardHeader>
-          <CardContent className="h-[200px]">
+          <CardContent className="h-[180px] md:h-[220px] lg:h-[260px] p-2">
             {!loading && categorySums.length > 0 ? (
               <ExpensesPie data={categorySums} />
             ) : (
@@ -160,11 +160,11 @@ export function DashboardClient() {
             )}
           </CardContent>
         </Card>
-        <Card className="h-64">
-          <CardHeader>
-            <CardTitle>{t('charts.incomeVsExpense')}</CardTitle>
+        <Card className="h-64 md:h-72 lg:h-80">
+          <CardHeader className="pb-2">
+            <CardTitle className="text-sm md:text-base">{t('charts.incomeVsExpense')}</CardTitle>
           </CardHeader>
-          <CardContent className="h-[200px]">
+          <CardContent className="h-[180px] md:h-[220px] lg:h-[260px] p-2">
             {!loading && monthlyTotals.length > 0 ? (
               <IncomeVsExpenseBar data={monthlyTotals} />
             ) : (
