@@ -1,0 +1,83 @@
+{
+  "nav": {
+    "dashboard": "Dashboard",
+    "addExpense": "Add Expense",
+    "addIncome": "Add Income",
+    "budgets": "Budgets",
+    "achievements": "Achievements",
+    "chat": "Chat",
+    "settings": "Settings"
+  },
+  "buttons": {
+    "importCsv": "Import CSV",
+    "addTransaction": "Add Transaction",
+    "clearAll": "Clear All Filters",
+    "template": "Template"
+  },
+  "kpi": {
+    "income": "Monthly Income",
+    "expenses": "Monthly Expenses",
+    "savings": "Monthly Savings"
+  },
+  "charts": {
+    "spendingByCategory": "Spending by Category",
+    "incomeVsExpense": "Income vs Expense",
+    "expensesOverTime": "Expenses Over Time",
+    "savingsTrend": "Savings Trend"
+  },
+  "advice": [
+    "Track your expenses daily to stay on budget.",
+    "Set monthly savings goals and review progress.",
+    "Categorize transactions for better insights.",
+    "Automate recurring income and expenses.",
+    "Analyze spending trends to cut costs.",
+    "Review your budget at the end of each month.",
+    "Build an emergency fund to handle surprises.",
+    "Invest regularly to grow wealth over time."
+  ],
+  "ai": {
+    "greeting": "Hello! I'm your AI financial advisor. How can I help you today?",
+    "savings": {
+      "excellent": "Excellent! You're saving ₹{savings} this month, which is {rate}% of your income. Keep up the great work!",
+      "good": "Good job! You're saving ₹{savings} this month, which is {rate}% of your income. Consider increasing it to 20% for better financial security.",
+      "needs_improvement": "You're saving ₹{savings} this month, which is {rate}% of your income. Try to increase your savings rate to at least 20% by reducing non-essential expenses."
+    },
+    "top_expense": "Your highest spending category this month is {category} with ₹{amount}. Consider reviewing if this aligns with your budget goals.",
+    "no_expenses": "No expenses recorded this month yet.",
+    "overspend": {
+      "category": "You've overspent on {category} this month. Current spending: ₹{current}, Budget limit: ₹{limit}. You're ₹{overspend} over budget.",
+      "within_budget": "Great! You're within budget for {category} this month."
+    },
+    "investment": {
+      "recommendation": "For ₹{amount}, I recommend {type} (₹{amount} allocation). Risk level: {risk}. {description} Expected return: {return}."
+    },
+    "savings_projection": {
+      "projection": "If you reduce {category} spending by {percent}%, your monthly savings would increase from ₹{current} to ₹{projected} (₹{increase} more)."
+    },
+    "income": {
+      "analysis": "Your total income this month is ₹{income}. This is a good foundation for building savings and investments."
+    },
+    "expense": {
+      "analysis": "Your total expenses this month are ₹{expenses}. Review your spending patterns to identify areas for improvement."
+    },
+    "advice": {
+      "0": "Track your expenses daily to stay on budget.",
+      "1": "Set monthly savings goals and review progress.",
+      "2": "Categorize transactions for better insights.",
+      "3": "Automate recurring income and expenses.",
+      "4": "Analyze spending trends to cut costs.",
+      "5": "Review your budget at the end of each month.",
+      "6": "Build an emergency fund to handle surprises.",
+      "7": "Invest regularly to grow wealth over time."
+    },
+    "quick_actions": {
+      "savings": "Can I save more this month?",
+      "top_expense": "Top expense this month",
+      "overspend_food": "Am I overspending on Food?",
+      "investment": "Suggest investment for ₹10,000",
+      "cut_dining": "How much can I save if I cut Dining by 15%?"
+    },
+    "unknown_query": "I'm not sure I understand. Try asking about your savings, expenses, or investment options.",
+    "error": "Sorry, I encountered an error. Please try again or rephrase your question."
+  }
+}
